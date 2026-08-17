@@ -89,12 +89,13 @@ def generate_pdf():
 
     cover_table_data = [
         [Paragraph("<b>Submission Metadata Item</b>", body_style), Paragraph("<b>Verified Value / Action Status</b>", body_style)],
-        [Paragraph("<b>GitHub Repository</b>", body_style), Paragraph("<font color='#D97706'>MANUAL ACTION REQUIRED</font> (Local git committed)", body_style)],
-        [Paragraph("<b>Working Production URL</b>", body_style), Paragraph("<font color='#D97706'>MANUAL ACTION REQUIRED</font> (Docker ready)", body_style)],
+        [Paragraph("<b>GitHub Repository</b>", body_style), Paragraph("<font color='#059669'>https://github.com/pavan-545/linkplease</font> (Pending manual push)", body_style)],
+        [Paragraph("<b>Working Production URL</b>", body_style), Paragraph("<font color='#D97706'>DEPLOYMENT ACCESS REQUIRED</font> (Docker ready)", body_style)],
         [Paragraph("<b>Loom Video URL</b>", body_style), Paragraph("<font color='#D97706'>MANUAL ACTION REQUIRED</font> (Script in LOOM_SCRIPT.md)", body_style)],
         [Paragraph("<b>Parts Completed</b>", body_style), Paragraph("<b><font color='#059669'>A + B + C</font></b> (Backend, Core Engine & SaaS Dashboard)", body_style)],
         [Paragraph("<b>Submission Status</b>", body_style), Paragraph("<b><font color='#D97706'>MANUAL ACTION REQUIRED</font></b>", body_style)]
     ]
+
     t_cover = Table(cover_table_data, colWidths=[200, 340])
     t_cover.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (1, 0), colors.HexColor('#F1F5F9')),
