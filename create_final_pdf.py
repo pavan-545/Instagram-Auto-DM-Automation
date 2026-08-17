@@ -89,12 +89,13 @@ def generate_pdf():
 
     cover_table_data = [
         [Paragraph("<b>Submission Metadata Item</b>", body_style), Paragraph("<b>Verified Value / Action Status</b>", body_style)],
-        [Paragraph("<b>GitHub Repository</b>", body_style), Paragraph("<b><font color='#059669'>https://github.com/pavan-545/Instagram-Auto-DM-Automation</font></b> (Verified Public)", body_style)],
+        [Paragraph("<b>GitHub Repository</b>", body_style), Paragraph("<b><font color='#059669'>https://github.com/pavan-545/Instagram-Auto-DM-Automation</font></b> (VERIFIED PUBLIC)", body_style)],
         [Paragraph("<b>Working Production URL</b>", body_style), Paragraph("<font color='#D97706'>DEPLOYMENT ACCESS REQUIRED</font> (Docker ready)", body_style)],
         [Paragraph("<b>Loom Video URL</b>", body_style), Paragraph("<font color='#D97706'>MANUAL ACTION REQUIRED</font> (Script in LOOM_SCRIPT.md)", body_style)],
         [Paragraph("<b>Parts Completed</b>", body_style), Paragraph("<b><font color='#059669'>A + B + C</font></b> (Backend, Core Engine & SaaS Dashboard)", body_style)],
         [Paragraph("<b>Submission Status</b>", body_style), Paragraph("<b><font color='#D97706'>MANUAL ACTION REQUIRED</font></b>", body_style)]
     ]
+
 
 
     t_cover = Table(cover_table_data, colWidths=[200, 340])
@@ -401,7 +402,7 @@ def generate_pdf():
 
     final_chk_data = [
         [Paragraph("<b>Checklist Item</b>", body_style), Paragraph("<b>Verification Status</b>", body_style)],
-        [Paragraph("Public GitHub Repository", body_style), Paragraph("<font color='#D97706'>[ ] MANUAL ACTION REQUIRED (Git commit ready)</font>", body_style)],
+        [Paragraph("Public GitHub Repository", body_style), Paragraph("<font color='#059669'>[x] VERIFIED (https://github.com/pavan-545/Instagram-Auto-DM-Automation)</font>", body_style)],
         [Paragraph("FAILURES.md in Repository Root", body_style), Paragraph("<font color='#059669'>[x] VERIFIED</font>", body_style)],
         [Paragraph("Production Deployment Containerized", body_style), Paragraph("<font color='#059669'>[x] VERIFIED (Dockerfile & docker-compose.yml)</font>", body_style)],
         [Paragraph("Working Production URL Verified", body_style), Paragraph("<font color='#D97706'>[ ] MANUAL ACTION REQUIRED</font>", body_style)],
@@ -423,10 +424,10 @@ def generate_pdf():
     story.append(Paragraph("WHAT PAVAN MUST DO (Final Manual Actions)", h2_style))
     
     manual_steps_list = [
-        "1. <b>Push to GitHub</b>: Run <code>git remote add origin https://github.com/YOUR_USERNAME/linkplease.git && git push -u origin main</code>",
+        "1. <b>Push to GitHub</b>: <font color='#059669'><b>[COMPLETED]</b></font> Code pushed to <code>https://github.com/pavan-545/Instagram-Auto-DM-Automation</code>",
         "2. <b>Deploy to Render/Railway</b>: Deploy the container and set environment variables (DATABASE_URL, PSEUDOGRAM_BASE_URL, etc.).",
-        "3. <b>Record Loom Video</b>: Record your screen following the script in <code>LOOM_SCRIPT.md</code>.",
-        "4. <b>Update SUBMISSION.json</b>: Insert your email, GitHub URL, working URL, Loom URL, and start date.",
+        "3. <b>Record 3-Minute Loom Video</b>: Record your screen following the script in <code>LOOM_SCRIPT.md</code>.",
+        "4. <b>Update SUBMISSION.json</b>: Insert your email, deployed URL, Loom URL, and start date.",
         "5. <b>Execute Submission Request</b>: Run <code>./SUBMIT.sh</code> or execute the cURL request in <code>SUBMIT_COMMAND.txt</code>."
     ]
 

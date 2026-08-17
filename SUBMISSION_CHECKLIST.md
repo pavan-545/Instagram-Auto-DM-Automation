@@ -1,6 +1,6 @@
 # Final Submission Checklist - LinkPlease
 
-- [ ] Public GitHub repository
+- [x] Public GitHub repository (https://github.com/pavan-545/Instagram-Auto-DM-Automation)
 - [x] FAILURES.md in root
 - [x] No secrets committed
 - [ ] Production deployment
