@@ -105,7 +105,7 @@ The system flow operates as follows:
 
 ### 2. Clone & Setup Repository
 ```bash
-git clone https://github.com/pavan-545/linkplease.git
+git clone https://github.com/pavan-545/Instagram-Auto-DM-Automation.git
 cd linkplease
 ```
 
