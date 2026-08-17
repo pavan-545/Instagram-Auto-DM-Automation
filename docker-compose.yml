@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: linkplease_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-linkplease_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-linkplease_password}
+      POSTGRES_DB: ${POSTGRES_DB:-linkplease}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-linkplease_user} -d $${POSTGRES_DB:-linkplease}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: linkplease_web
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql+asyncpg://linkplease_user:linkplease_password@postgres:5432/linkplease}
+      PSEUDOGRAM_BASE_URL: ${PSEUDOGRAM_BASE_URL:-https://pseudogram-api.onrender.com}
+      PSEUDOGRAM_API_KEY: ${PSEUDOGRAM_API_KEY:-}
+      WEBHOOK_SECRET: ${WEBHOOK_SECRET:-}
+      RATE_LIMIT_MAX_REQUESTS: ${RATE_LIMIT_MAX_REQUESTS:-10}
+      RATE_LIMIT_WINDOW_SECONDS: ${RATE_LIMIT_WINDOW_SECONDS:-60}
+      WORKER_INTERVAL_SECONDS: ${WORKER_INTERVAL_SECONDS:-1.0}
+      WORKER_RECONCILE_INTERVAL_SECONDS: ${WORKER_RECONCILE_INTERVAL_SECONDS:-2.0}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
